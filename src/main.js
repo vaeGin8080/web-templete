@@ -14,6 +14,19 @@ Object.keys(urls).forEach((key) => {
   Vue.prototype[key] = urls[key];
   console.log(key, urls[key]);
 });
+
+// 全局过滤器
+import * as filters from "./filters"; // global filters
+// register global utility filters
+Object.keys(filters).forEach((key) => {
+  Vue.filter(key, filters[key]);
+});
+
+// 全局注册组件
+import components from "./utils/components";
+Object.keys(components).forEach((key) => {
+  Vue.component(key, components[key]);
+});
 Vue.config.productionTip = false;
 
 new Vue({
